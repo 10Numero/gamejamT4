@@ -14,6 +14,7 @@ public class Selected : MonoBehaviour
     private void Awake()
     {
         index = transform.GetSiblingIndex();
+        index = transform.GetSiblingIndex();
         Preview = GameObject.FindGameObjectWithTag("Preview");
         Inv = GameObject.FindGameObjectWithTag("Inventory");
 
