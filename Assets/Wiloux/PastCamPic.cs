@@ -12,6 +12,8 @@ public class PastCamPic : MonoBehaviour
     private Texture2D myGUITexture;
     public RawImage img;
     public List<Texture2D> ImageList;
+    public GameObject PhotoCamPreview;
+    public Animator anim;
     void Awake()
     {
         cam2 = gameObject.GetComponent<Camera>();
@@ -42,6 +44,7 @@ public class PastCamPic : MonoBehaviour
             //cam2.gameObject.SetActive(false);
             //myGUITexture =(Texture2D) Resources.Load("pic" + PicNb + ".png");
             snapshot.Apply();
+            PhotoCamPreview.GetComponent<RawImage>().texture = snapshot;
             ImageList.Add(snapshot);
          //   img.texture = snapshot;
             Debug.Log("PicTaken!");

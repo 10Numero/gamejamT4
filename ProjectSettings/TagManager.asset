@@ -7,6 +7,8 @@ TagManager:
   - Inventory
   - Preview
   - CPU
+  - PastCam
+  - GM
   layers:
   - Default
   - TransparentFX
@@ -17,9 +19,9 @@ TagManager:
   - 
   - 
   - Picture
-  - 
-  - 
-  - 
+  - Past
+  - Present
+  - Void
   - 
   - 
   - 
