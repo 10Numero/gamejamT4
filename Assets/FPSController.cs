@@ -11,9 +11,7 @@ public class FPSController : MonoBehaviour
 
     private float xAxisValueMouse = 0.0f;
     private float zAxisValueMouse = 0.0f;
-
-    public float yPosition = 3f;
-        
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -24,10 +22,7 @@ public class FPSController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var altitude = transform.position;
-        altitude.y = Mathf.Clamp(transform.position.y, yPosition, 3);
-        transform.position = altitude;
-
+       
         Mouvement();
 
     }
@@ -38,28 +33,26 @@ public class FPSController : MonoBehaviour
         float xAxisValue = Input.GetAxis("Horizontal") * speed;
         float zAxisValue = Input.GetAxis("Vertical") * speed;
         
-        if (Input.GetAxis("Vertical") > 0)
+        if (Input.GetAxis("Horizontal") != 0)
         {
-            transform.position += this.transform.forward * speed * Time.deltaTime;
-        }
-        else if (Input.GetAxis("Vertical") < 0)
-        {
-            transform.position -= this.transform.forward * speed * Time.deltaTime;
-
+            float horizontalOrient = Mathf.Sign(Input.GetAxis("Horizontal"));
+            Vector3 horizontalDir = horizontalOrient * transform.right;
+            horizontalDir.y = 0f;
+            transform.position += horizontalDir * speed * Time.deltaTime;
         }
 
-        if (Input.GetAxis("Horizontal") < 0)
+        if (Input.GetAxis("Vertical") != 0)
         {
-            transform.position -= this.transform.right * speed * Time.deltaTime;
-        }
-        else if (Input.GetAxis("Horizontal") > 0)
-        {
-            transform.position += this.transform.right * speed * Time.deltaTime;
-
+            float verticalOrient = Mathf.Sign(Input.GetAxis("Vertical"));
+            Vector3 verticalDir = verticalOrient * transform.forward;
+            verticalDir.y = 0f;
+            transform.position += verticalDir * speed * Time.deltaTime;
         }
 
         xAxisValueMouse += speedH * Input.GetAxis("Mouse X");
         zAxisValueMouse -= speedV * Input.GetAxis("Mouse Y");
+        
+        zAxisValueMouse = Mathf.Clamp(zAxisValueMouse, -90f, 90f);
 
         transform.eulerAngles = new Vector3(zAxisValueMouse, xAxisValueMouse, 0.0f);
 
