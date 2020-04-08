@@ -18,6 +18,7 @@ public class FPSController : MonoBehaviour
     void Start()
     {
         //START
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
