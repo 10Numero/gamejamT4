@@ -16,15 +16,13 @@ public class FPSController : MonoBehaviour
     void Start()
     {
         //START
-        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
     void Update()
     {
-       
         Mouvement();
-
     }
 
     private void Mouvement()
