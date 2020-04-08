@@ -9,24 +9,80 @@ public class ObjetOfInterest : MonoBehaviour
 
     public Material InterestMat;
     public Material NonInterestMat;
+    public GameObject cam2;
+    public GameObject GM;
 
     private Renderer rend;
+    public bool isVisible = false;
+    public bool isReady = false;
 
     // Update is called once per frame
 
     private void Start()
     {
         rend = GetComponent<Renderer>();
+        GM = GameObject.FindGameObjectWithTag("GM");
+        cam2 = GameObject.FindGameObjectWithTag("PastCam");
     }
-    void Update()
+
+    private void Update()
     {
-        if(GameState == InterestState)
+
+    }
+    void LateUpdate()
+    {
+        if (cam2 != null)
         {
-            rend.material = InterestMat;
+            isReady = true;
         }
+
+
+        GameState = GM.GetComponent<GM>().GameState;
+        if (GameState == InterestState)
+        {
+            I_Can_See();
+            Debug.DrawLine(gameObject.transform.position, GM.transform.position, Color.green);
+            Debug.Log(gameObject);
+            rend.material = InterestMat;
+            gameObject.layer = 9;
+            if (cam2.activeInHierarchy && isReady)
+            {
+                if (isVisible)
+                {
+                    Debug.Log("nextstate");
+                    GM.GetComponent<GM>().GameState++;
+                    isReady = false;
+                }
+            }
+        }
+
+
         else
         {
+            // gameObject.layer = 11;
             rend.material = NonInterestMat;
         }
+
     }
+    public void I_Can_See()
+    {
+        Plane[] planes = GeometryUtility.CalculateFrustumPlanes(cam2.GetComponent<Camera>());
+        if (GeometryUtility.TestPlanesAABB(planes, gameObject.GetComponent<Collider>().bounds) && !Physics.Linecast(gameObject.transform.position, GM.transform.position))
+            isVisible = true;
+        else
+            isVisible = false;
+    }
+
+
+    //bool OnBecameVisible()
+    //{
+    //    Debug.Log("zetsubo");
+    //    return true;
+    //}
+
+    //void OnBecameInvisible()
+    //{
+    //    Debug.Log("depsair");
+    //    isVisible = false;
+    //}
 }
