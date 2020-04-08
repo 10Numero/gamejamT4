@@ -11,7 +11,8 @@ public class FPSController : MonoBehaviour
 
     private float xAxisValueMouse = 0.0f;
     private float zAxisValueMouse = 0.0f;
-    
+
+    public bool Locked = false;     
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +23,10 @@ public class FPSController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Mouvement();
+        if (!Locked)
+        {
+            Mouvement();
+        }
     }
 
     private void Mouvement()
