@@ -24,7 +24,7 @@ public class FPSController : MonoBehaviour
     void Update()
     {
         var altitude = transform.position;
-        altitude.y = Mathf.Clamp(transform.position.y, 3, 3);
+        altitude.y = Mathf.Clamp(transform.position.y, yPosition, 3);
         transform.position = altitude;
 
         Mouvement();
