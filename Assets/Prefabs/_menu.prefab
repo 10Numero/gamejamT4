@@ -175,6 +175,9 @@ MonoBehaviour:
   anim: {fileID: 0}
   audio: {fileID: 0}
   wood: {fileID: 0}
+  percentLoading: {fileID: 0}
+  loadingSlider: {fileID: 0}
+  loadingScreen: {fileID: 0}
   animCam: {fileID: 0}
 --- !u!1 &2038762553087699954
 GameObject:
@@ -305,6 +308,9 @@ MonoBehaviour:
   anim: {fileID: 0}
   audio: {fileID: 0}
   wood: {fileID: 0}
+  percentLoading: {fileID: 0}
+  loadingSlider: {fileID: 0}
+  loadingScreen: {fileID: 0}
   animCam: {fileID: 0}
 --- !u!65 &2038762553087699958
 BoxCollider:
@@ -448,6 +454,9 @@ MonoBehaviour:
   anim: {fileID: 0}
   audio: {fileID: 0}
   wood: {fileID: 0}
+  percentLoading: {fileID: 0}
+  loadingSlider: {fileID: 0}
+  loadingScreen: {fileID: 0}
   animCam: {fileID: 0}
 --- !u!65 &2038762553116203847
 BoxCollider:
