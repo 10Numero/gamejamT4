@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Inventory
   - Preview
+  - CPU
   - PastCam
   - GM
   layers:
