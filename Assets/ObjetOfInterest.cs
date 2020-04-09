@@ -41,15 +41,11 @@ public class ObjetOfInterest : MonoBehaviour
         if (GameState == InterestState)
         {
             I_Can_See();
-            Debug.DrawLine(gameObject.transform.position, GM.transform.position, Color.green);
-            Debug.Log(gameObject);
             rend.material = InterestMat;
-            gameObject.layer = 9;
             if (cam2.activeInHierarchy && isReady)
             {
                 if (isVisible)
                 {
-                    Debug.Log("nextstate");
                     GM.GetComponent<GM>().GameState++;
                     isReady = false;
                 }
@@ -59,7 +55,6 @@ public class ObjetOfInterest : MonoBehaviour
 
         else
         {
-            // gameObject.layer = 11;
             rend.material = NonInterestMat;
         }
 
@@ -73,16 +68,4 @@ public class ObjetOfInterest : MonoBehaviour
             isVisible = false;
     }
 
-
-    //bool OnBecameVisible()
-    //{
-    //    Debug.Log("zetsubo");
-    //    return true;
-    //}
-
-    //void OnBecameInvisible()
-    //{
-    //    Debug.Log("depsair");
-    //    isVisible = false;
-    //}
 }
