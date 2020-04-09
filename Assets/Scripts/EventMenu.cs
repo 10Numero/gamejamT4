@@ -58,7 +58,7 @@ public class EventMenu : MonoBehaviour
 
     public void Play()
     {
-        anim.SetTrigger("play");
+        animCam.SetTrigger("play");
         StartCoroutine(LoadPlayScene());
     }
 
