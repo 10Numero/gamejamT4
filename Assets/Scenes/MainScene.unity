@@ -254,10 +254,8 @@ GameObject:
   - component: {fileID: 94545954}
   - component: {fileID: 94545953}
   - component: {fileID: 94545952}
-  - component: {fileID: 94545955}
-  - component: {fileID: 94545957}
   - component: {fileID: 94545956}
-  - component: {fileID: 94545958}
+  - component: {fileID: 94545955}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -323,13 +321,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 94545951}
-  m_LocalRotation: {x: -0, y: -0.00071108347, z: -0, w: 0.99999976}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: 0, y: 3, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -0.081, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &94545955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,6 +343,7 @@ MonoBehaviour:
   speed: 2
   speedH: 2
   speedV: 2
+  Locked: 0
 --- !u!114 &94545956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,35 +357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   setActivation: 0
---- !u!65 &94545957
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 94545951}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &94545958
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 94545951}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  talkAid: {fileID: 1799621188}
 --- !u!1 &712713181 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100018, guid: 4837235d67e136e4b883adb2bafc73e8,
@@ -545,6 +516,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 6e17b4f6d557b41488d66ba9d108795d, type: 3}
       propertyPath: m_Name
       value: SM_Veh_Train_Carriage_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6e17b4f6d557b41488d66ba9d108795d, type: 3}
+      propertyPath: m_TagString
+      value: Decor
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6e17b4f6d557b41488d66ba9d108795d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -942,12 +917,12 @@ GameObject:
   - component: {fileID: 1799621191}
   - component: {fileID: 1799621190}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TextTalk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1799621189
 RectTransform:
   m_ObjectHideFlags: 0
