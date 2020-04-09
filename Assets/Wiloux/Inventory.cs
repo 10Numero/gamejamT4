@@ -10,7 +10,7 @@ public class Inventory : MonoBehaviour
     public GameObject Preview;
     public GameObject Photo;
     public List<GameObject> PhotoList;
-    public FPSController FpsControl;
+    public PlayerMovement FpsControl;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,16 +29,18 @@ public class Inventory : MonoBehaviour
     {
         if (Inv.gameObject.activeInHierarchy)
         {
-            FpsControl.Locked = false;
+            FpsControl.LockState = false;
             Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
             Preview.gameObject.SetActive(false);
             Inv.gameObject.SetActive(false);
 
         }
         else if (!Inv.gameObject.activeInHierarchy)
         {
-            FpsControl.Locked = true;
+            FpsControl.LockState = true;
             Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             Preview.SetActive(true);
             Inv.gameObject.SetActive(true);
             foreach (Texture2D Pic in cam2.ImageList)
