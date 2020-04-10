@@ -42,5 +42,8 @@ public class BotScript : MonoBehaviour
             FindObjectOfType<DialogueManager>().StartDialogue(dialogue[3]);
             closers[3] = true;
         }
+
+
+        // DERNIER ELSE IF = PLUS DE DIALOGUE DONC FEEDBACK AU PLAYER POUR DIRE IL NOUS FAUT PLUS D'INDICES OU QLQCHOSE DU GENRE
     }
 }
