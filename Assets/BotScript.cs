@@ -30,5 +30,17 @@ public class BotScript : MonoBehaviour
             FindObjectOfType<DialogueManager>().StartDialogue(dialogue[1]);
             closers[1] = true;
         }
+
+        else if (theList.PhotographedObjects.Contains(listeObjet[2]) && closers[2] == false)
+        {
+            FindObjectOfType<DialogueManager>().StartDialogue(dialogue[2]);
+            closers[2] = true;
+        }
+
+        else if (theList.PhotographedObjects.Contains(listeObjet[3]) && closers[3] == false)
+        {
+            FindObjectOfType<DialogueManager>().StartDialogue(dialogue[3]);
+            closers[3] = true;
+        }
     }
 }
