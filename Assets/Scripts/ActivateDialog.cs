@@ -30,7 +30,7 @@ public class ActivateDialog : MonoBehaviour
 
             if (Input.GetKey(KeyCode.X))
             {
-                FindObjectOfType<DialogueManager>().StartDialogue(dialogue[0]);
+                FindObjectOfType<DialogueManager>().StartDialogue(dialogue[5]);
             }
 
         }
@@ -41,6 +41,7 @@ public class ActivateDialog : MonoBehaviour
 
             if (Input.GetKey(KeyCode.X))
             {
+                Debug.Log("ClosedDoor");
                 FindObjectOfType<DialogueManager>().StartDialogue(dialogue[0]);
             }
 
@@ -52,7 +53,7 @@ public class ActivateDialog : MonoBehaviour
 
             if (Input.GetKey(KeyCode.X))
             {
-                FindObjectOfType<DialogueManager>().StartDialogue(dialogue[0]);
+                FindObjectOfType<DialogueManager>().StartDialogue(dialogue[7]);
             }
 
         }
@@ -63,7 +64,51 @@ public class ActivateDialog : MonoBehaviour
 
             if (Input.GetKey(KeyCode.X))
             {
-                FindObjectOfType<DialogueManager>().StartDialogue(dialogue[0]);
+                FindObjectOfType<DialogueManager>().StartDialogue(dialogue[6]);
+            }
+
+        }
+
+        else if (collider.gameObject.CompareTag("EliPhoto"))
+        {
+            talkAid.SetActive(true);
+
+            if (Input.GetKey(KeyCode.X))
+            {
+                FindObjectOfType<DialogueManager>().StartDialogue(dialogue[1]);
+            }
+
+        }
+
+        else if (collider.gameObject.CompareTag("Vomi"))
+        {
+            talkAid.SetActive(true);
+
+            if (Input.GetKey(KeyCode.X))
+            {
+                FindObjectOfType<DialogueManager>().StartDialogue(dialogue[2]);
+            }
+
+        }
+
+        else if (collider.gameObject.CompareTag("Body"))
+        {
+            talkAid.SetActive(true);
+
+            if (Input.GetKey(KeyCode.X))
+            {
+                FindObjectOfType<DialogueManager>().StartDialogue(dialogue[3]);
+            }
+
+        }
+
+        else if (collider.gameObject.CompareTag("BlueLips"))
+        {
+            talkAid.SetActive(true);
+
+            if (Input.GetKey(KeyCode.X))
+            {
+                FindObjectOfType<DialogueManager>().StartDialogue(dialogue[4]);
             }
 
         }
