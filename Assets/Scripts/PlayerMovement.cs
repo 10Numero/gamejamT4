@@ -80,14 +80,6 @@ public class PlayerMovement : MonoBehaviour {
     private void MyInput() {
         x = Input.GetAxisRaw("Horizontal");
         y = Input.GetAxisRaw("Vertical");
-        jumping = Input.GetButton("Jump");
-        crouching = Input.GetKey(KeyCode.LeftControl);
-      
-        //Crouching
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-            StartCrouch();
-        if (Input.GetKeyUp(KeyCode.LeftControl))
-            StopCrouch();
     }
 
     private void StartCrouch() {
@@ -98,11 +90,6 @@ public class PlayerMovement : MonoBehaviour {
                 rb.AddForce(orientation.transform.forward * slideForce);
             }
         }
-    }
-
-    private void StopCrouch() {
-        transform.localScale = playerScale;
-        transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
     }
 
     private void Movement() {
@@ -116,8 +103,6 @@ public class PlayerMovement : MonoBehaviour {
         //Counteract sliding and sloppy movement
         CounterMovement(x, y, mag);
         
-        //If holding jump && ready to jump, then jump
-        if (readyToJump && jumping) Jump();
 
         //Set max speed
         float maxSpeed = this.maxSpeed;
@@ -151,29 +136,6 @@ public class PlayerMovement : MonoBehaviour {
         rb.AddForce(orientation.transform.right * x * moveSpeed * Time.deltaTime * multiplier);
     }
 
-    private void Jump() {
-        if (grounded && readyToJump) {
-            readyToJump = false;
-
-            //Add jump forces
-            rb.AddForce(Vector2.up * jumpForce * 1.5f);
-            rb.AddForce(normalVector * jumpForce * 0.5f);
-            
-            //If jumping while falling, reset y velocity.
-            Vector3 vel = rb.velocity;
-            if (rb.velocity.y < 0.5f)
-                rb.velocity = new Vector3(vel.x, 0, vel.z);
-            else if (rb.velocity.y > 0) 
-                rb.velocity = new Vector3(vel.x, vel.y / 2, vel.z);
-            
-            Invoke(nameof(ResetJump), jumpCooldown);
-        }
-    }
-    
-    private void ResetJump() {
-        readyToJump = true;
-    }
-    
     private float desiredX;
     private void Look() {
         float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.fixedDeltaTime * sensMultiplier;
