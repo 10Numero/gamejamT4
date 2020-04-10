@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 
 public class BotScript : MonoBehaviour
@@ -13,7 +14,7 @@ public class BotScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        closers = new bool { false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false };
+        closers = new bool[17];
         theList = FindObjectOfType<GM>();
     }
 
