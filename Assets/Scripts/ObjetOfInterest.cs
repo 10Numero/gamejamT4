@@ -5,10 +5,8 @@ using UnityEngine;
 public class ObjetOfInterest : MonoBehaviour
 {
     public int GameState = 0;
-    public int InterestState = 1;
+    public int InterestState = 0;
 
-    public Material InterestMat;
-    public Material NonInterestMat;
     public GameObject cam2;
     public GameObject GM;
     private DialogueManager DM;
@@ -47,7 +45,6 @@ public class ObjetOfInterest : MonoBehaviour
         if (GameState >= InterestState && !HasBeenPhotographed)
         {
             I_Can_See();
-            rend.material = InterestMat;
             if (cam2.activeInHierarchy && isReady)
             {
                 if (isVisible)
@@ -66,7 +63,6 @@ public class ObjetOfInterest : MonoBehaviour
 
         else
         {
-            rend.material = NonInterestMat;
         }
 
     }
