@@ -10,6 +10,7 @@ TagManager:
   - PastCam
   - GM
   - Decor
+  - TP
   layers:
   - Default
   - TransparentFX
