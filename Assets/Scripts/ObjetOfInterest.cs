@@ -11,6 +11,8 @@ public class ObjetOfInterest : MonoBehaviour
     public Material NonInterestMat;
     public GameObject cam2;
     public GameObject GM;
+    private DialogueManager DM;
+    public Dialogue Comment; 
 
     private Renderer rend;
     public bool isVisible = false;
@@ -20,6 +22,7 @@ public class ObjetOfInterest : MonoBehaviour
 
     private void Start()
     {
+        DM = FindObjectOfType<DialogueManager>().GetComponent<DialogueManager>();
         rend = GetComponent<Renderer>();
         GM = GameObject.FindGameObjectWithTag("GM");
         cam2 = GameObject.FindGameObjectWithTag("PastCam");
@@ -48,6 +51,9 @@ public class ObjetOfInterest : MonoBehaviour
                 {
                     GM.GetComponent<GM>().PhotographedObjects.Add(gameObject);
                     GM.GetComponent<GM>().GameState++;
+                    if (Comment != null) {
+                        DM.StartDialogue(Comment);
+                    }
                     isReady = false;
                 }
             }
