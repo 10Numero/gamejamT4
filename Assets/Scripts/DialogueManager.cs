@@ -27,7 +27,7 @@ public class DialogueManager : MonoBehaviour
 
     }
 
-    public void StartDialogue(Dialogue dialogue, int interestState)
+    public void StartDialogue(Dialogue dialogue)
     {
         //animator.SetBool("IsOpen", true);
 

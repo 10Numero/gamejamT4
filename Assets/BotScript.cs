@@ -7,6 +7,7 @@ public class BotScript : MonoBehaviour
 
     private GM theList;
     public Dialogue[] dialogue;
+    public GameObject[] listeObjet;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +23,7 @@ public class BotScript : MonoBehaviour
 
     void OnTalkBot()
     {
-        if (theList.Contains(gameobject1))
+        if (theList.PhotographedObjects.Contains(listeObjet[1]))
         {
             FindObjectOfType<DialogueManager>().StartDialogue(dialogue[1]);
         }
