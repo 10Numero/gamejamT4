@@ -10,6 +10,8 @@ TagManager:
   - PastCam
   - GM
   - Decor
+  - ObjectPresent
+  - Bar
   layers:
   - Default
   - TransparentFX
