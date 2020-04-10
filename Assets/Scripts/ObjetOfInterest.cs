@@ -38,7 +38,7 @@ public class ObjetOfInterest : MonoBehaviour
 
 
         GameState = GM.GetComponent<GM>().GameState;
-        if (GameState == InterestState)
+        if (GameState >= InterestState)
         {
             I_Can_See();
             rend.material = InterestMat;
@@ -46,6 +46,7 @@ public class ObjetOfInterest : MonoBehaviour
             {
                 if (isVisible)
                 {
+                    GM.GetComponent<GM>().PhotographedObjects.Add(gameObject);
                     GM.GetComponent<GM>().GameState++;
                     isReady = false;
                 }

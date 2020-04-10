@@ -13,6 +13,8 @@ public class DialogueManager : MonoBehaviour
 
     private Queue<string> sentences;
     private Queue<AudioClip> voixOff;
+    public GameObject GM;
+
 
     public AudioSource audio; //créer un gameobject avec le component audio source et glisse le ici
 
@@ -21,9 +23,11 @@ public class DialogueManager : MonoBehaviour
     {
         voixOff = new Queue<AudioClip>();
         sentences = new Queue<string>();
+        GM = GameObject.FindGameObjectWithTag("GM");
+
     }
 
-    public void StartDialogue(Dialogue dialogue)
+    public void StartDialogue(Dialogue dialogue, int interestState)
     {
         //animator.SetBool("IsOpen", true);
 

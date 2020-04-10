@@ -5,15 +5,7 @@ using UnityEngine;
 public class GM : MonoBehaviour
 {
     public int GameState = 0;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    
+    public List<GameObject> PhotographedObjects;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

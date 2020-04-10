@@ -203,6 +203,7 @@ MonoBehaviour:
     - Bouteilles intactes.
     voixOff:
     - {fileID: 8300000, guid: 9829bfb9fa5da944084ef625eae1cbea, type: 3}
+  interestState: 0
 --- !u!1 &840309185475886345
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,6 +322,7 @@ MonoBehaviour:
   nameText: {fileID: 840309186978087499}
   dialogueText: {fileID: 840309186576535458}
   animator: {fileID: 0}
+  GM: {fileID: 0}
   audio: {fileID: 840309186669202835}
 --- !u!1 &840309185567923522
 GameObject:
@@ -371,6 +373,7 @@ MonoBehaviour:
     - "Bouteilles cass\xE9es et des pillules."
     voixOff:
     - {fileID: 8300000, guid: ebb10668c43bd324ab664cc1f0d271e0, type: 3}
+  interestState: 0
 --- !u!1 &840309185780570099
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,6 +457,7 @@ MonoBehaviour:
     - Lit vide.
     voixOff:
     - {fileID: 8300000, guid: f514e74658ec4eb42a2bbbadbec67321, type: 3}
+  interestState: 0
 --- !u!1 &840309185818501510
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,6 +506,7 @@ MonoBehaviour:
     sentences: []
     voixOff:
     - {fileID: 8300000, guid: 33ea1f5f7e2413f42919b48bab525089, type: 3}
+  interestState: 0
 --- !u!1 &840309185854655351
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,6 +556,7 @@ MonoBehaviour:
     - La veste de Robert et son assiette.
     voixOff:
     - {fileID: 8300000, guid: ee2f10c25e9e0c54fb85d57fedfd353e, type: 3}
+  interestState: 0
 --- !u!1 &840309185917413735
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,6 +643,7 @@ MonoBehaviour:
     sentences: []
     voixOff:
     - {fileID: 8300000, guid: e56c5eed6db4f9c48891524bba8a834a, type: 3}
+  interestState: 0
 --- !u!1 &840309185959625502
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,6 +694,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 04e26d24d80c2ae47b1f700a20fc45b0, type: 3}
     - {fileID: 8300000, guid: 4f49cc8c8c442894fa700a2fb3d0cdba, type: 3}
     - {fileID: 8300000, guid: fa3a898007bdb824d83e37051c5d29ea, type: 3}
+  interestState: 0
 --- !u!1 &840309185970901002
 GameObject:
   m_ObjectHideFlags: 0
@@ -741,6 +749,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 340d2d4161447a840af279f9a28354ad, type: 3}
     - {fileID: 8300000, guid: 1c67f0965a47d19488419d27e8b0439c, type: 3}
     - {fileID: 8300000, guid: 146cecb0a26d7ee478f689353d017a7d, type: 3}
+  interestState: 0
 --- !u!1 &840309186071230414
 GameObject:
   m_ObjectHideFlags: 0
@@ -830,6 +839,7 @@ MonoBehaviour:
     - "Un tapis tach\xE9 et un morceau de verre."
     voixOff:
     - {fileID: 8300000, guid: 1670da90ebd67aa4d83698269b2d899f, type: 3}
+  interestState: 0
 --- !u!1 &840309186097982087
 GameObject:
   m_ObjectHideFlags: 0
@@ -878,6 +888,7 @@ MonoBehaviour:
     sentences: []
     voixOff:
     - {fileID: 8300000, guid: a967e813df228044cbe71c9fadd3025f, type: 3}
+  interestState: 0
 --- !u!1 &840309186224133408
 GameObject:
   m_ObjectHideFlags: 0
@@ -926,6 +937,7 @@ MonoBehaviour:
     sentences: []
     voixOff:
     - {fileID: 8300000, guid: bcaf721ee1015614889433f87478eeff, type: 3}
+  interestState: 0
 --- !u!1 &840309186249066236
 GameObject:
   m_ObjectHideFlags: 0
@@ -976,6 +988,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 3a74824e0783a4346bc9662e485fcf52, type: 3}
     - {fileID: 8300000, guid: 25c1212e71951414fbd58cc7117ecb22, type: 3}
     - {fileID: 8300000, guid: 3a3fd2ba7f762264cabb83bebe2c92f6, type: 3}
+  interestState: 0
 --- !u!1 &840309186254080004
 GameObject:
   m_ObjectHideFlags: 0
@@ -1153,6 +1166,7 @@ MonoBehaviour:
     sentences:
     - "Table pour d\xE9jeuner."
     voixOff: []
+  interestState: 0
 --- !u!1 &840309186344730960
 GameObject:
   m_ObjectHideFlags: 0
@@ -1202,6 +1216,7 @@ MonoBehaviour:
     - "Grille d'a\xE9ration cass\xE9e."
     voixOff:
     - {fileID: 8300000, guid: ba4bc5a40a74a274b9a731b940b4d214, type: 3}
+  interestState: 0
 --- !u!1 &840309186375601407
 GameObject:
   m_ObjectHideFlags: 0
@@ -1251,6 +1266,7 @@ MonoBehaviour:
     - Un mouchoir avec les initiales W.L .
     voixOff:
     - {fileID: 8300000, guid: 75ccc3ffb4b93ed46b95a64db3c4e6cf, type: 3}
+  interestState: 0
 --- !u!1 &840309186434926767
 GameObject:
   m_ObjectHideFlags: 0
@@ -1300,6 +1316,7 @@ MonoBehaviour:
     - Table de jeu .
     voixOff:
     - {fileID: 8300000, guid: 6e75d701998a635438e0e19000ff854a, type: 3}
+  interestState: 0
 --- !u!1 &840309186564631563
 GameObject:
   m_ObjectHideFlags: 0
@@ -1349,6 +1366,7 @@ MonoBehaviour:
     - Alliance et  flacon de pillules.
     voixOff:
     - {fileID: 8300000, guid: 2db2bad1906183140bafb405168fcf0c, type: 3}
+  interestState: 0
 --- !u!1 &840309186576535457
 GameObject:
   m_ObjectHideFlags: 0
@@ -1602,6 +1620,7 @@ MonoBehaviour:
     - Une partie en cours.
     voixOff:
     - {fileID: 8300000, guid: c5589becbf958e640a3ec46b2c001d3d, type: 3}
+  interestState: 0
 --- !u!1 &840309186742636550
 GameObject:
   m_ObjectHideFlags: 0
@@ -1653,6 +1672,7 @@ MonoBehaviour:
     voixOff:
     - {fileID: 8300000, guid: 43da1aba83e8d5642987cd949b969f41, type: 3}
     - {fileID: 8300000, guid: b3180e9ae0fa2044cb431bdb23fe70f0, type: 3}
+  interestState: 0
 --- !u!1 &840309186757775881
 GameObject:
   m_ObjectHideFlags: 0
@@ -1702,6 +1722,7 @@ MonoBehaviour:
     - "Grille d'a\xE9ration bouch\xE9e."
     voixOff:
     - {fileID: 8300000, guid: b36716cf8de42ea47990b904721df256, type: 3}
+  interestState: 0
 --- !u!1 &840309186786367622
 GameObject:
   m_ObjectHideFlags: 0
@@ -1751,6 +1772,7 @@ MonoBehaviour:
     - Traces de vomi.
     voixOff:
     - {fileID: 8300000, guid: 2c2b3bf6f2ad49048b1e96c7f6be50f0, type: 3}
+  interestState: 0
 --- !u!1 &840309186786990663
 GameObject:
   m_ObjectHideFlags: 0
@@ -1800,6 +1822,7 @@ MonoBehaviour:
     - "Une Valise verrouill\xE9e."
     voixOff:
     - {fileID: 8300000, guid: a66c8f53240cca94e9a12caceee30ceb, type: 3}
+  interestState: 0
 --- !u!1 &840309186805250662
 GameObject:
   m_ObjectHideFlags: 0
@@ -1849,6 +1872,7 @@ MonoBehaviour:
     - Bar.
     voixOff:
     - {fileID: 8300000, guid: 7a35d0300ddc8bd419f58b2bf36c55ce, type: 3}
+  interestState: 0
 --- !u!1 &840309186828837589
 GameObject:
   m_ObjectHideFlags: 0
@@ -1897,6 +1921,7 @@ MonoBehaviour:
     sentences: []
     voixOff:
     - {fileID: 8300000, guid: cc45e05977bd39848bcad499984fc298, type: 3}
+  interestState: 0
 --- !u!1 &840309186952509330
 GameObject:
   m_ObjectHideFlags: 0
@@ -1946,6 +1971,7 @@ MonoBehaviour:
     - "L\xE8vres bleues."
     voixOff:
     - {fileID: 8300000, guid: 848b90c4f9c32034d85c28cc97e94760, type: 3}
+  interestState: 0
 --- !u!1 &840309186953391327
 GameObject:
   m_ObjectHideFlags: 0
@@ -1995,6 +2021,7 @@ MonoBehaviour:
     - Une lettre.
     voixOff:
     - {fileID: 8300000, guid: 92d82cda965d76d419e8e7bd31085060, type: 3}
+  interestState: 0
 --- !u!1 &840309186978087498
 GameObject:
   m_ObjectHideFlags: 0
@@ -2121,6 +2148,7 @@ MonoBehaviour:
     - "Une Porte verrouill\xE9e."
     voixOff:
     - {fileID: 8300000, guid: 2429a73f19acea541a8bd8a2c03adac7, type: 3}
+  interestState: 0
 --- !u!1 &840309187061280512
 GameObject:
   m_ObjectHideFlags: 0
@@ -2170,6 +2198,7 @@ MonoBehaviour:
     - Veste disparue.
     voixOff:
     - {fileID: 8300000, guid: 6c0a8117f72f4be4e8c925387466e974, type: 3}
+  interestState: 0
 --- !u!1 &840309187072914950
 GameObject:
   m_ObjectHideFlags: 0
@@ -2348,6 +2377,7 @@ MonoBehaviour:
     - "Corps crisp\xE9."
     voixOff:
     - {fileID: 8300000, guid: c9f0faecfa775e04a889fe5ec3021e71, type: 3}
+  interestState: 0
 --- !u!1 &840309187105677587
 GameObject:
   m_ObjectHideFlags: 0
@@ -2396,6 +2426,7 @@ MonoBehaviour:
     sentences: []
     voixOff:
     - {fileID: 8300000, guid: 4648519f297fd4940b8a1bda784a78b9, type: 3}
+  interestState: 0
 --- !u!1 &840309187123465870
 GameObject:
   m_ObjectHideFlags: 0
@@ -2445,6 +2476,7 @@ MonoBehaviour:
     - "Un verre et une bouteille bris\xE9e."
     voixOff:
     - {fileID: 8300000, guid: ff2d90224ddfb284081f9ecea0a56fe7, type: 3}
+  interestState: 0
 --- !u!1 &840309187130710746
 GameObject:
   m_ObjectHideFlags: 0
@@ -2493,6 +2525,7 @@ MonoBehaviour:
     sentences: []
     voixOff:
     - {fileID: 8300000, guid: 7e5768933fea66e47bb07f81c33d5790, type: 3}
+  interestState: 0
 --- !u!1 &840309187160034121
 GameObject:
   m_ObjectHideFlags: 0
@@ -2541,6 +2574,7 @@ MonoBehaviour:
     sentences: []
     voixOff:
     - {fileID: 8300000, guid: 8bbddfe0cb0c75f42ad3ea80f9c74364, type: 3}
+  interestState: 0
 --- !u!1 &840309187228352606
 GameObject:
   m_ObjectHideFlags: 0
@@ -2590,6 +2624,7 @@ MonoBehaviour:
     - Un vanity-kit.
     voixOff:
     - {fileID: 8300000, guid: a910975cc759a3d478c6923e50e803ab, type: 3}
+  interestState: 0
 --- !u!1 &840309187257291811
 GameObject:
   m_ObjectHideFlags: 0
@@ -2720,6 +2755,7 @@ MonoBehaviour:
     - "Un Tapis retourn\xE9 et un verre \xE0 terre."
     voixOff:
     - {fileID: 8300000, guid: 6890178ca8327ca4eb731c948d376328, type: 3}
+  interestState: 0
 --- !u!1 &840309187366629610
 GameObject:
   m_ObjectHideFlags: 0
@@ -2769,6 +2805,7 @@ MonoBehaviour:
     - Valise de Marta.
     voixOff:
     - {fileID: 8300000, guid: 43cb92e2ae55a554aa685dbdc7f4ae2b, type: 3}
+  interestState: 0
 --- !u!1 &840309187396180637
 GameObject:
   m_ObjectHideFlags: 0
@@ -2818,6 +2855,7 @@ MonoBehaviour:
     - Corps de Robert.
     voixOff:
     - {fileID: 8300000, guid: fe44ac3d54a66904ea44e2d612b39425, type: 3}
+  interestState: 0
 --- !u!1 &840309187473096169
 GameObject:
   m_ObjectHideFlags: 0
@@ -2867,6 +2905,7 @@ MonoBehaviour:
     - "Une lampe \xE0 huile bris\xE9e."
     voixOff:
     - {fileID: 8300000, guid: f6a372a0ee236cb4d8b7ca072dc99422, type: 3}
+  interestState: 0
 --- !u!1 &840309187479301439
 GameObject:
   m_ObjectHideFlags: 0
@@ -2919,6 +2958,7 @@ MonoBehaviour:
     voixOff:
     - {fileID: 8300000, guid: 455d1f9c6f9b5ac4dad9d72f815230b5, type: 3}
     - {fileID: 8300000, guid: 56f3040ed5b20654f8cd1fe35014ac78, type: 3}
+  interestState: 0
 --- !u!1 &840309187487767915
 GameObject:
   m_ObjectHideFlags: 0
