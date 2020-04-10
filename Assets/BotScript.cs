@@ -8,7 +8,7 @@ public class BotScript : MonoBehaviour
     private GM theList;
     public Dialogue[] dialogue;
     public GameObject[] listeObjet;
-    private closer[] closers;
+    private bool[] closers;
 
     // Start is called before the first frame update
     void Start()
