@@ -12,11 +12,13 @@ public class ObjetOfInterest : MonoBehaviour
     public GameObject cam2;
     public GameObject GM;
     private DialogueManager DM;
-    public Dialogue Comment; 
+    public GameObject Comment; 
+    private Dialogue CommentDialogue; 
 
     private Renderer rend;
     public bool isVisible = false;
     public bool isReady = false;
+    public bool HasBeenPhotographed;
 
     // Update is called once per frame
 
@@ -26,6 +28,7 @@ public class ObjetOfInterest : MonoBehaviour
         rend = GetComponent<Renderer>();
         GM = GameObject.FindGameObjectWithTag("GM");
         cam2 = GameObject.FindGameObjectWithTag("PastCam");
+        CommentDialogue = Comment.GetComponent<DialogueTrigger>().dialogue;
     }
 
     private void Update()
@@ -41,7 +44,7 @@ public class ObjetOfInterest : MonoBehaviour
 
 
         GameState = GM.GetComponent<GM>().GameState;
-        if (GameState >= InterestState)
+        if (GameState >= InterestState && !HasBeenPhotographed)
         {
             I_Can_See();
             rend.material = InterestMat;
@@ -49,10 +52,11 @@ public class ObjetOfInterest : MonoBehaviour
             {
                 if (isVisible)
                 {
+                    HasBeenPhotographed = true;
                     GM.GetComponent<GM>().PhotographedObjects.Add(gameObject);
                     GM.GetComponent<GM>().GameState++;
                     if (Comment != null) {
-                        DM.StartDialogue(Comment);
+                        DM.StartDialogue(CommentDialogue);
                     }
                     isReady = false;
                 }
