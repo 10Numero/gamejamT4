@@ -18,6 +18,7 @@ public class ObjetOfInterest : MonoBehaviour
     private Renderer rend;
     public bool isVisible = false;
     public bool isReady = false;
+    public bool HasBeenPhotographed;
 
     // Update is called once per frame
 
@@ -43,7 +44,7 @@ public class ObjetOfInterest : MonoBehaviour
 
 
         GameState = GM.GetComponent<GM>().GameState;
-        if (GameState >= InterestState)
+        if (GameState >= InterestState && !HasBeenPhotographed)
         {
             I_Can_See();
             rend.material = InterestMat;
@@ -51,6 +52,7 @@ public class ObjetOfInterest : MonoBehaviour
             {
                 if (isVisible)
                 {
+                    HasBeenPhotographed = true;
                     GM.GetComponent<GM>().PhotographedObjects.Add(gameObject);
                     GM.GetComponent<GM>().GameState++;
                     if (Comment != null) {
