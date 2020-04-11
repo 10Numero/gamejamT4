@@ -17,6 +17,17 @@ TagManager:
   - Lettre
   - Mouchoir
   - TP
+  - Suitcase
+  - Vest
+  - Body
+  - BlueLips
+  - Kit
+  - Bottles
+  - Pills
+  - Vomi
+  - LockedSuitcase
+  - Letter
+  - Tissue
   layers:
   - Default
   - TransparentFX
