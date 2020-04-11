@@ -708,13 +708,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameState: 0
   InterestState: 0
-  InterestMat: {fileID: 2100000, guid: 75e2f8cd375b4aa43bdfd710af110b23, type: 2}
-  NonInterestMat: {fileID: 2100000, guid: c221d112102f3f84b9940a3b8e2735f5, type: 2}
   cam2: {fileID: 0}
   GM: {fileID: 0}
   Comment: {fileID: 0}
   isVisible: 1
   isReady: 0
+  HasBeenPhotographed: 0
 --- !u!65 &154281368
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1818,13 +1817,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameState: 0
   InterestState: 2
-  InterestMat: {fileID: 2100000, guid: 75e2f8cd375b4aa43bdfd710af110b23, type: 2}
-  NonInterestMat: {fileID: 2100000, guid: c221d112102f3f84b9940a3b8e2735f5, type: 2}
   cam2: {fileID: 0}
   GM: {fileID: 0}
   Comment: {fileID: 1219318199}
   isVisible: 1
   isReady: 0
+  HasBeenPhotographed: 0
 --- !u!65 &761443818
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2060,31 +2058,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 42033af3e57c199419fcbf23e12af7fd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.37
+      value: -1.3685056
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 42033af3e57c199419fcbf23e12af7fd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.395
+      value: -4.399
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 42033af3e57c199419fcbf23e12af7fd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.267
+      value: -2.4369886
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 42033af3e57c199419fcbf23e12af7fd, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.31166214
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 42033af3e57c199419fcbf23e12af7fd, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.036004554
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 42033af3e57c199419fcbf23e12af7fd, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.021098018
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 42033af3e57c199419fcbf23e12af7fd, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.94927627
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 42033af3e57c199419fcbf23e12af7fd, type: 3}
       propertyPath: m_RootOrder
@@ -2092,15 +2090,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 42033af3e57c199419fcbf23e12af7fd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -36.170002
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 42033af3e57c199419fcbf23e12af7fd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -5.795
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 42033af3e57c199419fcbf23e12af7fd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 4.44
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 42033af3e57c199419fcbf23e12af7fd, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -5397,13 +5395,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameState: 0
   InterestState: 0
-  InterestMat: {fileID: 2100000, guid: 75e2f8cd375b4aa43bdfd710af110b23, type: 2}
-  NonInterestMat: {fileID: 2100000, guid: c221d112102f3f84b9940a3b8e2735f5, type: 2}
   cam2: {fileID: 0}
   GM: {fileID: 0}
   Comment: {fileID: 515311461}
   isVisible: 1
   isReady: 0
+  HasBeenPhotographed: 0
 --- !u!65 &2126581231
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5574,6 +5571,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameState: 0
   PhotographedObjects: []
+  lol: []
 --- !u!4 &4988035998293830502
 Transform:
   m_ObjectHideFlags: 0
