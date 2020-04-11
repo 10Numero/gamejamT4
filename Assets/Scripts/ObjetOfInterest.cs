@@ -68,6 +68,7 @@ public class ObjetOfInterest : MonoBehaviour
     }
     public void I_Can_See()
     {
+       
         Plane[] planes = GeometryUtility.CalculateFrustumPlanes(cam2.GetComponent<Camera>());
         if (GeometryUtility.TestPlanesAABB(planes, gameObject.GetComponent<Collider>().bounds) && !Physics.Linecast(gameObject.transform.position, GM.transform.position))
             isVisible = true;

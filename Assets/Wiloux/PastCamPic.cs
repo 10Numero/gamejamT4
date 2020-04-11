@@ -38,11 +38,6 @@ public class PastCamPic : MonoBehaviour
             cam2.Render();
             RenderTexture.active = cam2.targetTexture;
             snapshot.ReadPixels(new Rect(0, 0, resWidth, resHeight), 0, 0);
-            //byte[] bytes = snapshot.EncodeToPNG();
-            //string fileName = PictureName();
-            //System.IO.File.WriteAllBytes(fileName, bytes);
-            //cam2.gameObject.SetActive(false);
-            //myGUITexture =(Texture2D) Resources.Load("pic" + PicNb + ".png");
             snapshot.Apply();
             PhotoCamPreview.GetComponent<RawImage>().texture = snapshot;
             ImageList.Add(snapshot);

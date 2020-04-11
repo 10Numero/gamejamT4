@@ -7,6 +7,8 @@ public class PhotoTaker : MonoBehaviour
     public PastCamPic cam2;
     public Animator anim;
     public Animator anim2;
+    public AudioSource audio;
+    public AudioClip SfxFlash;
     private void Update()
     {
 
@@ -17,7 +19,10 @@ public class PhotoTaker : MonoBehaviour
             {
                 cam2.CallTakeSnap();
                 anim2.SetTrigger("Flash");
-            }
+
+                audio.pitch = Random.Range(0.5f, 1.5f);
+                audio.PlayOneShot(SfxFlash, 1);
+}
         }
         else
         {
