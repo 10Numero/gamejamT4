@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class ActivateDialog : MonoBehaviour
 {
-
-    public bool setActivation = false;
-
+    
     public GameObject talkAid;
     public Dialogue[] dialogue;
 
@@ -122,6 +120,36 @@ public class ActivateDialog : MonoBehaviour
         }
 
         else if (collider.gameObject.CompareTag("ClosedDoor"))
+        {
+            talkAid.SetActive(false);
+        }
+
+        else if (collider.gameObject.CompareTag("Mouchoir"))
+        {
+            talkAid.SetActive(false);
+        }
+
+        else if (collider.gameObject.CompareTag("Lettre"))
+        {
+            talkAid.SetActive(false);
+        }
+
+        else if (collider.gameObject.CompareTag("EliPhoto"))
+        {
+            talkAid.SetActive(false);
+        }
+
+        else if (collider.gameObject.CompareTag("Vomi"))
+        {
+            talkAid.SetActive(false);
+        }
+
+        else if (collider.gameObject.CompareTag("Body"))
+        {
+            talkAid.SetActive(false);
+        }
+
+        else if (collider.gameObject.CompareTag("BlueLips"))
         {
             talkAid.SetActive(false);
         }
