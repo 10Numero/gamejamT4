@@ -28,6 +28,9 @@ TagManager:
   - LockedSuitcase
   - Letter
   - Tissue
+  - LampLessTable
+  - Poker
+  - Rack
   layers:
   - Default
   - TransparentFX

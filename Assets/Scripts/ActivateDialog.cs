@@ -165,6 +165,50 @@ public class ActivateDialog : MonoBehaviour
             }
 
         }
+
+        else if (collider.gameObject.CompareTag("LampLessTable"))
+        {
+            talkAid.SetActive(true);
+
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                FindObjectOfType<DialogueManager>().StartDialogue(dialogue[13]);
+            }
+
+        }
+
+        else if (collider.gameObject.CompareTag("Poker"))
+        {
+            talkAid.SetActive(true);
+
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                FindObjectOfType<DialogueManager>().StartDialogue(dialogue[14]);
+            }
+
+        }
+
+        else if (collider.gameObject.CompareTag("Bar"))
+        {
+            talkAid.SetActive(true);
+
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                FindObjectOfType<DialogueManager>().StartDialogue(dialogue[15]);
+            }
+
+        }
+
+        else if (collider.gameObject.CompareTag("Rack"))
+        {
+            talkAid.SetActive(true);
+
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                FindObjectOfType<DialogueManager>().StartDialogue(dialogue[16]);
+            }
+
+        }
         
     }
 
@@ -237,6 +281,30 @@ public class ActivateDialog : MonoBehaviour
         }
 
         else if (collider.gameObject.CompareTag("Tissue"))
+        {
+            talkAid.SetActive(false);
+            FindObjectOfType<DialogueManager>().dialogueText.text = "";
+        }
+
+        else if (collider.gameObject.CompareTag("LampLessTable"))
+        {
+            talkAid.SetActive(false);
+            FindObjectOfType<DialogueManager>().dialogueText.text = "";
+        }
+
+        else if (collider.gameObject.CompareTag("Poker"))
+        {
+            talkAid.SetActive(false);
+            FindObjectOfType<DialogueManager>().dialogueText.text = "";
+        }
+
+        else if (collider.gameObject.CompareTag("Bar"))
+        {
+            talkAid.SetActive(false);
+            FindObjectOfType<DialogueManager>().dialogueText.text = "";
+        }
+
+        else if (collider.gameObject.CompareTag("Rack"))
         {
             talkAid.SetActive(false);
             FindObjectOfType<DialogueManager>().dialogueText.text = "";
