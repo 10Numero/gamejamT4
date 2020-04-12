@@ -8,11 +8,14 @@ public class ActivateDialog : MonoBehaviour
     
     public GameObject talkAid;
     public GameObject letterToRead;
+
     [Space(10)]
     public AudioSource audioS;
+
     [Space(10)]
     public GameObject closedDoorWilliam;
     public GameObject opendedDoorWilliam;
+
     [Space(10)]
     public GameObject pastBedRobert;
     public GameObject pastAlliance;
@@ -22,18 +25,22 @@ public class ActivateDialog : MonoBehaviour
     public GameObject pastCarpet;
     public GameObject pastSuitcase;
     public GameObject pastTableBrokenLamp;
+    public GameObject pastNewspaper;
+
     [Space(10)]
     public Dialogue[] commentsPresent;
     public Dialogue[] recaps;
     public Dialogue openDoor;
 
     private bool lookAtBody = false;
+
     private bool[] examination1 = new bool[6];
     private bool[] examination2 = new bool[4];
     private bool[] examination3 = new bool[3];
 
     private bool doOnceDoorNoise = false;
     private bool[] doOnceRecap = new bool[7];
+
     [Space(10)]
     public bool firstCondition = false;
     public bool firstConditionPast = false;
@@ -109,6 +116,7 @@ public class ActivateDialog : MonoBehaviour
             && pastCarpet.GetComponent<ObjetOfInterest>().HasBeenPhotographed && firstConditionPast)
         {
             secondConditionPast = true;
+            pastNewspaper.GetComponent<ObjetOfInterest>().cantBePhotographed = false;
         }
         
         if (secondCondition)
@@ -157,7 +165,7 @@ public class ActivateDialog : MonoBehaviour
         }
         
         // Recap 4
-        if (examination2[2] && pastCarpet.GetComponent<ObjetOfInterest>().HasBeenPhotographed && firstConditionPast)
+        if (examination2[2] && pastCarpet.GetComponent<ObjetOfInterest>().HasBeenPhotographed)
         {
             if (!audioS.isPlaying && !doOnceRecap[3])
             {
@@ -187,7 +195,7 @@ public class ActivateDialog : MonoBehaviour
         //}
 
         // Recap 7
-        if (doOnceRecap[1] && doOnceRecap[2] && doOnceRecap[3] && secondCondition && secondConditionPast)
+        if (doOnceRecap[1] && secondCondition && secondConditionPast)
         {
             if (!audioS.isPlaying && !doOnceRecap[6])
             {
@@ -322,7 +330,7 @@ public class ActivateDialog : MonoBehaviour
 
         }
 
-        else if (collider.gameObject.CompareTag("LockedSuitcase") && secondCondition && secondConditionPast)
+        else if (collider.gameObject.CompareTag("LockedSuitcase") && secondCondition)
         {
             talkAid.SetActive(true);
 
@@ -334,7 +342,7 @@ public class ActivateDialog : MonoBehaviour
 
         }
 
-        else if (collider.gameObject.CompareTag("Letter") && secondCondition && secondConditionPast)
+        else if (collider.gameObject.CompareTag("Letter") && secondCondition)
         {
             talkAid.SetActive(true);
 
@@ -352,7 +360,7 @@ public class ActivateDialog : MonoBehaviour
 
         }
 
-        else if (collider.gameObject.CompareTag("Tissue") && secondCondition && secondConditionPast)
+        else if (collider.gameObject.CompareTag("Tissue") && secondCondition)
         {
             talkAid.SetActive(true);
 
@@ -423,7 +431,7 @@ public class ActivateDialog : MonoBehaviour
 
         }
 
-        else if (collider.gameObject.CompareTag("EliPhoto2") && secondCondition && secondConditionPast)
+        else if (collider.gameObject.CompareTag("EliPhoto2") && secondCondition)
         {
             talkAid.SetActive(true);
 
