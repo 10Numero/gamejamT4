@@ -17,6 +17,7 @@ public class ObjetOfInterest : MonoBehaviour
     public bool isVisible = false;
     public bool isReady = false;
     public bool HasBeenPhotographed;
+    public bool cantBePhotographed = true;
 
     // Update is called once per frame
 
@@ -42,7 +43,7 @@ public class ObjetOfInterest : MonoBehaviour
 
 
         GameState = GM.GetComponent<GM>().GameState;
-        if (GameState >= InterestState && !HasBeenPhotographed)
+        if (GameState >= InterestState && !HasBeenPhotographed && cantBePhotographed)
         {
             I_Can_See();
             if (cam2.activeInHierarchy && isReady)
