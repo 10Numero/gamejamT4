@@ -8,20 +8,60 @@ public class ActivateDialog : MonoBehaviour
     
     public GameObject talkAid;
     public GameObject letterToRead;
-    public Dialogue[] dialogue;
+    public AudioSource audioS;
+    private bool doOnce = false;
+
+    public Dialogue[] commentsPresent;
+    public Dialogue[] recaps;
+
+    public GameObject pastBedRobert;
 
     private bool lookAtBody = false;
+    private bool[] examination1 = new bool[6];
+    private bool[] examination2 = new bool[5];
+    
+    public bool firstCondition = false;
+    public bool secondCondition = false;
 
     // Start is called before the first frame update
     void Start()
     {
         talkAid.SetActive(false);
         letterToRead.SetActive(false);
+
+        for(int i = 0; i < examination1.Length; i++)
+        {
+            examination1[i] = false;
+        }
+
+        for (int j = 0; j < examination2.Length; j++)
+        {
+            examination2[j] = false;
+        }
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (examination1[0] && examination1[1] && examination1[2] && examination1[3] && examination1[4] && examination1[5] && examination1[6])
+        {
+            firstCondition = true;
+        }
+
+        if (examination2[0] && examination2[1] && examination2[2] && examination2[3])
+        {
+            secondCondition = true;
+        }
+        
+        if (examination1[2] && examination1[3] && examination1[4] && pastBedRobert.GetComponent<ObjetOfInterest>().HasBeenPhotographed)
+        {
+            if (!audioS.isPlaying && !doOnce)
+            {
+                FindObjectOfType<DialogueManager>().StartDialogue(recaps[0]);
+                doOnce = true;
+            }
+        }
 
     }
 
@@ -29,13 +69,13 @@ public class ActivateDialog : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("Body") && !lookAtBody)
         {
-            FindObjectOfType<DialogueManager>().StartDialogue(dialogue[3]);
+            FindObjectOfType<DialogueManager>().StartDialogue(commentsPresent[3]);
             lookAtBody = true;
         }
 
-        else if (collider.gameObject.CompareTag("LunchTable"))
+        else if (collider.gameObject.CompareTag("LunchTable") && firstCondition)
         {
-                FindObjectOfType<DialogueManager>().StartDialogue(dialogue[17]);
+                FindObjectOfType<DialogueManager>().StartDialogue(commentsPresent[16]);
         }
     }
 
@@ -47,7 +87,7 @@ public class ActivateDialog : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.X))
             {
-                FindObjectOfType<DialogueManager>().StartDialogue(dialogue[0]);
+                FindObjectOfType<DialogueManager>().StartDialogue(commentsPresent[0]);
             }
 
         }
@@ -58,7 +98,9 @@ public class ActivateDialog : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.X))
             {
-                FindObjectOfType<DialogueManager>().StartDialogue(dialogue[1]);
+                FindObjectOfType<DialogueManager>().StartDialogue(commentsPresent[1]);
+                examination1[0] = true;
+
             }
 
         }
@@ -69,7 +111,8 @@ public class ActivateDialog : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.X))
             {
-                FindObjectOfType<DialogueManager>().StartDialogue(dialogue[2]);
+                FindObjectOfType<DialogueManager>().StartDialogue(commentsPresent[2]);
+                examination1[1] = true;
             }
 
         }
@@ -80,7 +123,8 @@ public class ActivateDialog : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.X))
             {
-                FindObjectOfType<DialogueManager>().StartDialogue(dialogue[4]);
+                FindObjectOfType<DialogueManager>().StartDialogue(commentsPresent[4]);
+                examination1[2] = true;
             }
 
         }
@@ -91,7 +135,8 @@ public class ActivateDialog : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.X))
             {
-                FindObjectOfType<DialogueManager>().StartDialogue(dialogue[5]);
+                FindObjectOfType<DialogueManager>().StartDialogue(commentsPresent[5]);
+                examination1[4] = true;
             }
 
         }
@@ -102,7 +147,8 @@ public class ActivateDialog : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.X))
             {
-                FindObjectOfType<DialogueManager>().StartDialogue(dialogue[6]);
+                FindObjectOfType<DialogueManager>().StartDialogue(commentsPresent[6]);
+                examination1[5] = true;
             }
 
         }
@@ -113,18 +159,8 @@ public class ActivateDialog : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.X))
             {
-                FindObjectOfType<DialogueManager>().StartDialogue(dialogue[7]);
-            }
-
-        }
-
-        else if (collider.gameObject.CompareTag("Bottles"))
-        {
-            talkAid.SetActive(true);
-
-            if (Input.GetKeyDown(KeyCode.X))
-            {
-                FindObjectOfType<DialogueManager>().StartDialogue(dialogue[8]);
+                FindObjectOfType<DialogueManager>().StartDialogue(commentsPresent[7]);
+                examination1[6] = true;
             }
 
         }
@@ -135,30 +171,31 @@ public class ActivateDialog : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.X))
             {
-                FindObjectOfType<DialogueManager>().StartDialogue(dialogue[9]);
+                FindObjectOfType<DialogueManager>().StartDialogue(commentsPresent[8]);
+                examination1[3] = true;
             }
 
         }
 
-        else if (collider.gameObject.CompareTag("LockedSuitcase"))
+        else if (collider.gameObject.CompareTag("LockedSuitcase") && secondCondition)
         {
             talkAid.SetActive(true);
 
             if (Input.GetKeyDown(KeyCode.X))
             {
-                FindObjectOfType<DialogueManager>().StartDialogue(dialogue[10]);
+                FindObjectOfType<DialogueManager>().StartDialogue(commentsPresent[9]);
             }
 
         }
 
-        else if (collider.gameObject.CompareTag("Letter"))
+        else if (collider.gameObject.CompareTag("Letter") && secondCondition)
         {
             talkAid.SetActive(true);
 
             if (Input.GetKeyDown(KeyCode.X))
             {
                 letterToRead.SetActive(true);
-                FindObjectOfType<DialogueManager>().StartDialogue(dialogue[11]);
+                FindObjectOfType<DialogueManager>().StartDialogue(commentsPresent[10]);
             }
             
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -168,46 +205,49 @@ public class ActivateDialog : MonoBehaviour
 
         }
 
-        else if (collider.gameObject.CompareTag("Tissue"))
+        else if (collider.gameObject.CompareTag("Tissue") && secondCondition)
         {
             talkAid.SetActive(true);
 
             if (Input.GetKeyDown(KeyCode.X))
             {
-                FindObjectOfType<DialogueManager>().StartDialogue(dialogue[12]);
+                FindObjectOfType<DialogueManager>().StartDialogue(commentsPresent[11]);
             }
 
         }
 
-        else if (collider.gameObject.CompareTag("LampLessTable"))
+        else if (collider.gameObject.CompareTag("LampLessTable") && firstCondition)
         {
             talkAid.SetActive(true);
 
             if (Input.GetKeyDown(KeyCode.X))
             {
-                FindObjectOfType<DialogueManager>().StartDialogue(dialogue[13]);
+                FindObjectOfType<DialogueManager>().StartDialogue(commentsPresent[12]);
+                examination2[0] = true;
             }
 
         }
 
-        else if (collider.gameObject.CompareTag("Poker"))
+        else if (collider.gameObject.CompareTag("Poker") && firstCondition)
         {
             talkAid.SetActive(true);
 
             if (Input.GetKeyDown(KeyCode.X))
             {
-                FindObjectOfType<DialogueManager>().StartDialogue(dialogue[14]);
+                FindObjectOfType<DialogueManager>().StartDialogue(commentsPresent[13]);
+                examination2[1] = true;
             }
 
         }
 
-        else if (collider.gameObject.CompareTag("Bar"))
+        else if (collider.gameObject.CompareTag("Bar") && firstCondition)
         {
             talkAid.SetActive(true);
 
             if (Input.GetKeyDown(KeyCode.X))
             {
-                FindObjectOfType<DialogueManager>().StartDialogue(dialogue[15]);
+                FindObjectOfType<DialogueManager>().StartDialogue(commentsPresent[14]);
+                examination2[4] = true;
             }
 
         }
@@ -218,18 +258,31 @@ public class ActivateDialog : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.X))
             {
-                FindObjectOfType<DialogueManager>().StartDialogue(dialogue[16]);
+                FindObjectOfType<DialogueManager>().StartDialogue(commentsPresent[15]);
             }
 
         }
 
-        else if (collider.gameObject.CompareTag("Carpet"))
+        else if (collider.gameObject.CompareTag("Carpet") && firstCondition)
         {
             talkAid.SetActive(true);
 
             if (Input.GetKeyDown(KeyCode.X))
             {
-                FindObjectOfType<DialogueManager>().StartDialogue(dialogue[18]);
+                FindObjectOfType<DialogueManager>().StartDialogue(commentsPresent[17]);
+                examination2[2] = true;
+            }
+
+        }
+
+        else if (collider.gameObject.CompareTag("EliPhoto2") && firstCondition)
+        {
+            talkAid.SetActive(true);
+
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                FindObjectOfType<DialogueManager>().StartDialogue(commentsPresent[18]);
+                examination2[5] = true;
             }
 
         }

@@ -33,6 +33,7 @@ TagManager:
   - Rack
   - LunchTable
   - Carpet
+  - EliPhoto2
   layers:
   - Default
   - TransparentFX
