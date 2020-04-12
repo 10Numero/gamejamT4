@@ -20,7 +20,7 @@ public class ObjetOfInterest : MonoBehaviour
 
     // Update is called once per frame
 
-    private void Start()
+    private void Awake()
     {
         DM = FindObjectOfType<DialogueManager>().GetComponent<DialogueManager>();
         rend = GetComponent<Renderer>();
