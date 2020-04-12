@@ -9,17 +9,20 @@ public class ActivateDialog : MonoBehaviour
     public GameObject talkAid;
     public GameObject letterToRead;
     public AudioSource audioS;
-    private bool doOnce = false;
+
+    public GameObject doorWilliam;
+
+    public GameObject pastBedRobert;
 
     public Dialogue[] commentsPresent;
     public Dialogue[] recaps;
 
-    public GameObject pastBedRobert;
-
     private bool lookAtBody = false;
     private bool[] examination1 = new bool[6];
     private bool[] examination2 = new bool[5];
-    
+
+    private bool doOnce = false;
+
     public bool firstCondition = false;
     public bool secondCondition = false;
 
@@ -53,6 +56,12 @@ public class ActivateDialog : MonoBehaviour
         {
             secondCondition = true;
         }
+        
+        //if (secondCondition)
+        //{
+        //    doorWilliam.transform.rotation = Quaternion.Euler(doorWilliam.transform.rotation.z, doorWilliam.transform.rotation.x, -161.3f);
+        //    doorWilliam.transform.position = new Vector3(2.101f, doorWilliam.transform.position.y, doorWilliam.transform.position.z);
+        //}
         
         if (examination1[2] && examination1[3] && examination1[4] && pastBedRobert.GetComponent<ObjetOfInterest>().HasBeenPhotographed)
         {
