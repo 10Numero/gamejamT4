@@ -7,6 +7,7 @@ public class ActivateDialog : MonoBehaviour
 {
     
     public GameObject talkAid;
+    public GameObject letterToRead;
     public Dialogue[] dialogue;
 
     private bool lookAtBody = false;
@@ -15,6 +16,7 @@ public class ActivateDialog : MonoBehaviour
     void Start()
     {
         talkAid.SetActive(false);
+        letterToRead.SetActive(false);
     }
 
     // Update is called once per frame
@@ -29,6 +31,11 @@ public class ActivateDialog : MonoBehaviour
         {
             FindObjectOfType<DialogueManager>().StartDialogue(dialogue[3]);
             lookAtBody = true;
+        }
+
+        else if (collider.gameObject.CompareTag("LunchTable"))
+        {
+                FindObjectOfType<DialogueManager>().StartDialogue(dialogue[17]);
         }
     }
 
@@ -150,7 +157,13 @@ public class ActivateDialog : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.X))
             {
+                letterToRead.SetActive(true);
                 FindObjectOfType<DialogueManager>().StartDialogue(dialogue[11]);
+            }
+            
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                letterToRead.SetActive(false);
             }
 
         }
@@ -206,6 +219,17 @@ public class ActivateDialog : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.X))
             {
                 FindObjectOfType<DialogueManager>().StartDialogue(dialogue[16]);
+            }
+
+        }
+
+        else if (collider.gameObject.CompareTag("Carpet"))
+        {
+            talkAid.SetActive(true);
+
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                FindObjectOfType<DialogueManager>().StartDialogue(dialogue[18]);
             }
 
         }
@@ -277,6 +301,7 @@ public class ActivateDialog : MonoBehaviour
         else if (collider.gameObject.CompareTag("Letter"))
         {
             talkAid.SetActive(false);
+            letterToRead.SetActive(false);
             FindObjectOfType<DialogueManager>().dialogueText.text = "";
         }
 
@@ -305,6 +330,18 @@ public class ActivateDialog : MonoBehaviour
         }
 
         else if (collider.gameObject.CompareTag("Rack"))
+        {
+            talkAid.SetActive(false);
+            FindObjectOfType<DialogueManager>().dialogueText.text = "";
+        }
+
+        else if (collider.gameObject.CompareTag("LunchTable"))
+        {
+            talkAid.SetActive(false);
+            FindObjectOfType<DialogueManager>().dialogueText.text = "";
+        }
+
+        else if (collider.gameObject.CompareTag("Carpet"))
         {
             talkAid.SetActive(false);
             FindObjectOfType<DialogueManager>().dialogueText.text = "";

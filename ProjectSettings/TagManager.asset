@@ -31,6 +31,8 @@ TagManager:
   - LampLessTable
   - Poker
   - Rack
+  - LunchTable
+  - Carpet
   layers:
   - Default
   - TransparentFX
