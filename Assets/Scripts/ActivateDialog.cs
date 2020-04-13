@@ -6,8 +6,11 @@ using UnityEngine.UI;
 public class ActivateDialog : MonoBehaviour
 {
     [Header("User Interface")]
-    public GameObject talkAid;
+    public GameObject examineAid;
+    public GameObject dialogueAid;
     public GameObject letterToRead;
+    public GameObject newspaperToRead;
+    public GameObject buttons;
     
     [Header("Audiosource")]
     public AudioSource audioS;
@@ -24,12 +27,13 @@ public class ActivateDialog : MonoBehaviour
     public GameObject pastVestRobert;
     public GameObject pastCarpet;
     public GameObject pastSuitcase;
-    public GameObject pastTableBrokenLamp;
+    public GameObject pastBrokenLamp;
     public GameObject pastNewspaper;
     
     [Header("Dialogues")]
     public Dialogue[] commentsPresent;
     public Dialogue[] recaps;
+    public Dialogue[] dialogues;
     public Dialogue openDoor;
 
     private bool lookAtBody = false;
@@ -37,6 +41,7 @@ public class ActivateDialog : MonoBehaviour
     private bool[] examination1 = new bool[7];
     private bool[] examination2 = new bool[5];
     private bool[] examination3 = new bool[4];
+    private bool[] examinationDialogues = new bool[4];
 
     private bool doOnceDoorNoise = false;
     private bool[] doOnceRecap = new bool[8];
@@ -46,23 +51,29 @@ public class ActivateDialog : MonoBehaviour
     public bool firstConditionPast = false;
     public bool secondCondition = false;
     public bool secondConditionPast = false;
+    public bool finalCondition = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        talkAid.SetActive(false);
+        examineAid.SetActive(false);
+        dialogueAid.SetActive(false);
         letterToRead.SetActive(false);
+        buttons.SetActive(false);
+        newspaperToRead.SetActive(false);
         closedDoorWilliam.SetActive(true);
         opendedDoorWilliam.SetActive(false);
+        FindObjectOfType<DialogueManager>().dialogueText.text = "";
 
         pastBedRobert.GetComponent<ObjetOfInterest>().cantBePhotographed = false;
         pastAlliance.GetComponent<ObjetOfInterest>().cantBePhotographed = false;
         pastIntactBottle.GetComponent<ObjetOfInterest>().cantBePhotographed = false;
 
-        firstCondition = false;
-        firstConditionPast = false;
+        //firstCondition = false;
+        //firstConditionPast = false;
         //secondCondition = false;
         //secondConditionPast = false;
+        //finalCondition = false;
 
         doOnceDoorNoise = false;
 
@@ -84,6 +95,11 @@ public class ActivateDialog : MonoBehaviour
         for (int i = 0; i < examination3.Length; i++)
         {
             examination3[i] = false;
+        }
+
+        for (int i = 0; i < examinationDialogues.Length; i++)
+        {
+            examinationDialogues[i] = false;
         }
 
     }
@@ -108,21 +124,25 @@ public class ActivateDialog : MonoBehaviour
             && pastIntactBottle.GetComponent<ObjetOfInterest>().HasBeenPhotographed)
         {
             firstConditionPast = true;
-            pastTableBrokenLamp.GetComponent<ObjetOfInterest>().cantBePhotographed = false;
+            pastBrokenLamp.GetComponent<ObjetOfInterest>().cantBePhotographed = false;
             pastPokerTable.GetComponent<ObjetOfInterest>().cantBePhotographed = false;
             pastVestRobert.GetComponent<ObjetOfInterest>().cantBePhotographed = false;
             pastCarpet.GetComponent<ObjetOfInterest>().cantBePhotographed = false;
         }
 
-        if (pastTableBrokenLamp.GetComponent<ObjetOfInterest>().HasBeenPhotographed 
+        if (pastBrokenLamp.GetComponent<ObjetOfInterest>().HasBeenPhotographed 
             && pastPokerTable.GetComponent<ObjetOfInterest>().HasBeenPhotographed
             && pastVestRobert.GetComponent<ObjetOfInterest>().HasBeenPhotographed 
             && pastCarpet.GetComponent<ObjetOfInterest>().HasBeenPhotographed && firstConditionPast)
         {
             secondConditionPast = true;
+        }
+
+        if (secondConditionPast)
+        {
             pastNewspaper.GetComponent<ObjetOfInterest>().cantBePhotographed = false;
         }
-        
+
         if (secondCondition && secondConditionPast)
         {
             closedDoorWilliam.SetActive(false);
@@ -179,24 +199,24 @@ public class ActivateDialog : MonoBehaviour
         }
 
         // Recap 5
-        //if ()
-        //{
-        //    if (!audioS.isPlaying && !doOnceRecap[4])
-        //    {
-        //        FindObjectOfType<DialogueManager>().StartDialogue(recaps[4]);
-        //        doOnceRecap[4] = true;
-        //    }
-        //}
+        if (examinationDialogues[0])
+        {
+            if (!audioS.isPlaying && !doOnceRecap[4])
+            {
+                FindObjectOfType<DialogueManager>().StartDialogue(recaps[4]);
+                doOnceRecap[4] = true;
+            }
+        }
 
         // Recap 6
-        //if ()
-        //{
-        //    if (!audioS.isPlaying && !doOnceRecap[5])
-        //    {
-        //        FindObjectOfType<DialogueManager>().StartDialogue(recaps[5]);
-        //        doOnceRecap[5] = true;
-        //    }
-        //}
+        if (examinationDialogues[1])
+        {
+            if (!audioS.isPlaying && !doOnceRecap[5])
+            {
+                FindObjectOfType<DialogueManager>().StartDialogue(recaps[5]);
+                doOnceRecap[5] = true;
+            }
+        }
 
         // Recap 7
         if (doOnceRecap[1] && secondCondition && secondConditionPast)
@@ -216,14 +236,22 @@ public class ActivateDialog : MonoBehaviour
             {
                 FindObjectOfType<DialogueManager>().StartDialogue(recaps[7]);
                 doOnceRecap[7] = true;
+                finalCondition = true;
             }
+        }
+
+        // Choose between Maria and William
+        if (finalCondition)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            buttons.SetActive(true);
         }
 
     }
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.CompareTag("Body") && !lookAtBody)
+        if (collider.gameObject.CompareTag("Body") && !lookAtBody && !audioS.isPlaying)
         {
             FindObjectOfType<DialogueManager>().StartDialogue(commentsPresent[3]);
             lookAtBody = true;
@@ -240,7 +268,7 @@ public class ActivateDialog : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("ClosedDoor") && !audioS.isPlaying)
         {
-            talkAid.SetActive(true);
+            examineAid.SetActive(true);
 
             if (Input.GetKeyDown(KeyCode.X))
             {
@@ -249,9 +277,9 @@ public class ActivateDialog : MonoBehaviour
 
         }
 
-        else if (collider.gameObject.CompareTag("EliPhoto"))
+        else if (collider.gameObject.CompareTag("EliPhoto") && !audioS.isPlaying)
         {
-            talkAid.SetActive(true);
+            examineAid.SetActive(true);
 
             if (Input.GetKeyDown(KeyCode.X))
             {
@@ -262,9 +290,9 @@ public class ActivateDialog : MonoBehaviour
 
         }
 
-        else if (collider.gameObject.CompareTag("Suitcase"))
+        else if (collider.gameObject.CompareTag("Suitcase") && !audioS.isPlaying)
         {
-            talkAid.SetActive(true);
+            examineAid.SetActive(true);
 
             if (Input.GetKeyDown(KeyCode.X))
             {
@@ -276,7 +304,7 @@ public class ActivateDialog : MonoBehaviour
 
         else if (collider.gameObject.CompareTag("Body") && !audioS.isPlaying)
         {
-            talkAid.SetActive(true);
+            examineAid.SetActive(true);
 
             if (Input.GetKeyDown(KeyCode.X))
             {
@@ -288,7 +316,7 @@ public class ActivateDialog : MonoBehaviour
 
         else if (collider.gameObject.CompareTag("BlueLips") && !audioS.isPlaying)
         {
-            talkAid.SetActive(true);
+            examineAid.SetActive(true);
 
             if (Input.GetKeyDown(KeyCode.X))
             {
@@ -298,9 +326,9 @@ public class ActivateDialog : MonoBehaviour
 
         }
 
-        else if (collider.gameObject.CompareTag("Kit"))
+        else if (collider.gameObject.CompareTag("Kit") && !audioS.isPlaying)
         {
-            talkAid.SetActive(true);
+            examineAid.SetActive(true);
 
             if (Input.GetKeyDown(KeyCode.X))
             {
@@ -310,9 +338,9 @@ public class ActivateDialog : MonoBehaviour
 
         }
 
-        else if (collider.gameObject.CompareTag("Pills"))
+        else if (collider.gameObject.CompareTag("Pills") && !audioS.isPlaying)
         {
-            talkAid.SetActive(true);
+            examineAid.SetActive(true);
 
             if (Input.GetKeyDown(KeyCode.X))
             {
@@ -322,9 +350,9 @@ public class ActivateDialog : MonoBehaviour
 
         }
 
-        else if (collider.gameObject.CompareTag("Vomi"))
+        else if (collider.gameObject.CompareTag("Vomi") && !audioS.isPlaying)
         {
-            talkAid.SetActive(true);
+            examineAid.SetActive(true);
 
             if (Input.GetKeyDown(KeyCode.X))
             {
@@ -334,9 +362,9 @@ public class ActivateDialog : MonoBehaviour
 
         }
 
-        else if (collider.gameObject.CompareTag("LockedSuitcase") && secondCondition)
+        else if (collider.gameObject.CompareTag("LockedSuitcase") && secondCondition && !audioS.isPlaying)
         {
-            talkAid.SetActive(true);
+            examineAid.SetActive(true);
 
             if (Input.GetKeyDown(KeyCode.X))
             {
@@ -344,11 +372,16 @@ public class ActivateDialog : MonoBehaviour
                 examination3[0] = true;
             }
 
+            if (pastNewspaper.GetComponent<ObjetOfInterest>().HasBeenPhotographed)
+            {
+                newspaperToRead.SetActive(true);
+            }
+
         }
 
-        else if (collider.gameObject.CompareTag("Letter") && secondCondition)
+        else if (collider.gameObject.CompareTag("Letter") && secondCondition && !audioS.isPlaying)
         {
-            talkAid.SetActive(true);
+            examineAid.SetActive(true);
 
             if (Input.GetKeyDown(KeyCode.X))
             {
@@ -364,9 +397,9 @@ public class ActivateDialog : MonoBehaviour
 
         }
 
-        else if (collider.gameObject.CompareTag("Tissue") && secondCondition)
+        else if (collider.gameObject.CompareTag("Tissue") && secondCondition && !audioS.isPlaying)
         {
-            talkAid.SetActive(true);
+            examineAid.SetActive(true);
 
             if (Input.GetKeyDown(KeyCode.X))
             {
@@ -376,9 +409,9 @@ public class ActivateDialog : MonoBehaviour
 
         }
 
-        else if (collider.gameObject.CompareTag("LampLessTable") && firstCondition)
+        else if (collider.gameObject.CompareTag("LampLessTable") && firstCondition && !audioS.isPlaying)
         {
-            talkAid.SetActive(true);
+            examineAid.SetActive(true);
 
             if (Input.GetKeyDown(KeyCode.X))
             {
@@ -388,9 +421,9 @@ public class ActivateDialog : MonoBehaviour
 
         }
 
-        else if (collider.gameObject.CompareTag("Poker") && firstCondition)
+        else if (collider.gameObject.CompareTag("Poker") && firstCondition && !audioS.isPlaying)
         {
-            talkAid.SetActive(true);
+            examineAid.SetActive(true);
 
             if (Input.GetKeyDown(KeyCode.X))
             {
@@ -400,9 +433,9 @@ public class ActivateDialog : MonoBehaviour
 
         }
 
-        else if (collider.gameObject.CompareTag("Bar") && firstCondition)
+        else if (collider.gameObject.CompareTag("Bar") && firstCondition && !audioS.isPlaying)
         {
-            talkAid.SetActive(true);
+            examineAid.SetActive(true);
 
             if (Input.GetKeyDown(KeyCode.X))
             {
@@ -412,9 +445,9 @@ public class ActivateDialog : MonoBehaviour
 
         }
 
-        else if (collider.gameObject.CompareTag("Rack"))
+        else if (collider.gameObject.CompareTag("Rack") && !audioS.isPlaying)
         {
-            talkAid.SetActive(true);
+            examineAid.SetActive(true);
 
             if (Input.GetKeyDown(KeyCode.X))
             {
@@ -423,9 +456,9 @@ public class ActivateDialog : MonoBehaviour
 
         }
 
-        else if (collider.gameObject.CompareTag("Carpet") && firstCondition)
+        else if (collider.gameObject.CompareTag("Carpet") && firstCondition && !audioS.isPlaying)
         {
-            talkAid.SetActive(true);
+            examineAid.SetActive(true);
 
             if (Input.GetKeyDown(KeyCode.X))
             {
@@ -435,9 +468,9 @@ public class ActivateDialog : MonoBehaviour
 
         }
 
-        else if (collider.gameObject.CompareTag("EliPhoto2") && secondCondition)
+        else if (collider.gameObject.CompareTag("EliPhoto2") && secondCondition && !audioS.isPlaying)
         {
-            talkAid.SetActive(true);
+            examineAid.SetActive(true);
 
             if (Input.GetKeyDown(KeyCode.X))
             {
@@ -446,125 +479,176 @@ public class ActivateDialog : MonoBehaviour
             }
 
         }
-        
+
+        // Dialogue 1
+        if(collider.gameObject.CompareTag("DoorDialogues") && doOnceRecap[1] && !audioS.isPlaying && !examinationDialogues[0] && !audioS.isPlaying)
+        {
+            dialogueAid.SetActive(true);
+
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                FindObjectOfType<DialogueManager>().StartDialogue(dialogues[0]);
+                examinationDialogues[0] = true;
+            }
+        }
+        // Dialogue 2
+        else if (collider.gameObject.CompareTag("DoorDialogues") && doOnceRecap[2] && examinationDialogues[0] && !examinationDialogues[1] && !audioS.isPlaying)
+        {
+            dialogueAid.SetActive(true);
+
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                FindObjectOfType<DialogueManager>().StartDialogue(dialogues[1]);
+                examinationDialogues[1] = true;
+            }
+        }
+        // Dialogue 3
+        else if (collider.gameObject.CompareTag("DoorDialogues") && doOnceRecap[7] && examinationDialogues[1] && !examinationDialogues[2] && !audioS.isPlaying)
+        {
+            dialogueAid.SetActive(true);
+
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                FindObjectOfType<DialogueManager>().StartDialogue(dialogues[2]);
+                examinationDialogues[2] = true;
+            }
+        }
+        // Dialogue 4
+        else if (collider.gameObject.CompareTag("DoorDialogues") && doOnceRecap[2] && !examinationDialogues[3] && !audioS.isPlaying)
+        {
+            dialogueAid.SetActive(true);
+
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                FindObjectOfType<DialogueManager>().StartDialogue(dialogues[3]);
+                examinationDialogues[3] = true;
+            }
+        }
+
     }
 
     private void OnTriggerExit(Collider collider)
     {
         if (collider.gameObject.CompareTag("ClosedDoor"))
         {
-            talkAid.SetActive(false);
+            examineAid.SetActive(false);
             FindObjectOfType<DialogueManager>().dialogueText.text = "";
         }
 
         else if (collider.gameObject.CompareTag("EliPhoto"))
         {
-            talkAid.SetActive(false);
+            examineAid.SetActive(false);
             FindObjectOfType<DialogueManager>().dialogueText.text = "";
         }
 
         else if (collider.gameObject.CompareTag("Suitcase"))
         {
-            talkAid.SetActive(false);
+            examineAid.SetActive(false);
             FindObjectOfType<DialogueManager>().dialogueText.text = "";
         }
 
         else if (collider.gameObject.CompareTag("Body"))
         {
-            talkAid.SetActive(false);
+            examineAid.SetActive(false);
             FindObjectOfType<DialogueManager>().dialogueText.text = "";
         }
 
         else if (collider.gameObject.CompareTag("BlueLips"))
         {
-            talkAid.SetActive(false);
+            examineAid.SetActive(false);
             FindObjectOfType<DialogueManager>().dialogueText.text = "";
         }
 
         else if (collider.gameObject.CompareTag("Kit"))
         {
-            talkAid.SetActive(false);
+            examineAid.SetActive(false);
             FindObjectOfType<DialogueManager>().dialogueText.text = "";
         }
 
         else if (collider.gameObject.CompareTag("Pills"))
         {
-            talkAid.SetActive(false);
+            examineAid.SetActive(false);
             FindObjectOfType<DialogueManager>().dialogueText.text = "";
         }
 
         else if (collider.gameObject.CompareTag("Vomi"))
         {
-            talkAid.SetActive(false);
+            examineAid.SetActive(false);
             FindObjectOfType<DialogueManager>().dialogueText.text = "";
         }
 
         else if (collider.gameObject.CompareTag("LockedSuitcase"))
         {
-            talkAid.SetActive(false);
+            examineAid.SetActive(false);
+            newspaperToRead.SetActive(false);
             FindObjectOfType<DialogueManager>().dialogueText.text = "";
         }
 
         else if (collider.gameObject.CompareTag("Letter"))
         {
-            talkAid.SetActive(false);
+            examineAid.SetActive(false);
             letterToRead.SetActive(false);
             FindObjectOfType<DialogueManager>().dialogueText.text = "";
         }
 
         else if (collider.gameObject.CompareTag("Tissue"))
         {
-            talkAid.SetActive(false);
+            examineAid.SetActive(false);
             FindObjectOfType<DialogueManager>().dialogueText.text = "";
         }
 
         else if (collider.gameObject.CompareTag("LampLessTable"))
         {
-            talkAid.SetActive(false);
+            examineAid.SetActive(false);
             FindObjectOfType<DialogueManager>().dialogueText.text = "";
         }
 
         else if (collider.gameObject.CompareTag("Poker"))
         {
-            talkAid.SetActive(false);
+            examineAid.SetActive(false);
             FindObjectOfType<DialogueManager>().dialogueText.text = "";
         }
 
         else if (collider.gameObject.CompareTag("Bar"))
         {
-            talkAid.SetActive(false);
+            examineAid.SetActive(false);
             FindObjectOfType<DialogueManager>().dialogueText.text = "";
         }
 
         else if (collider.gameObject.CompareTag("Rack"))
         {
-            talkAid.SetActive(false);
+            examineAid.SetActive(false);
             FindObjectOfType<DialogueManager>().dialogueText.text = "";
         }
 
         else if (collider.gameObject.CompareTag("LunchTable"))
         {
-            talkAid.SetActive(false);
+            examineAid.SetActive(false);
             FindObjectOfType<DialogueManager>().dialogueText.text = "";
         }
 
         else if (collider.gameObject.CompareTag("Carpet"))
         {
-            talkAid.SetActive(false);
+            examineAid.SetActive(false);
             FindObjectOfType<DialogueManager>().dialogueText.text = "";
         }
 
         else if (collider.gameObject.CompareTag("EliPhoto2"))
         {
-            talkAid.SetActive(false);
+            examineAid.SetActive(false);
             FindObjectOfType<DialogueManager>().dialogueText.text = "";
+        }
+
+        if (collider.gameObject.CompareTag("DoorDialogues"))
+        {
+            dialogueAid.SetActive(false);
         }
 
     }
 
     IEnumerator DoorOpened()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(4);
         FindObjectOfType<DialogueManager>().dialogueText.text = "";
     }
 }

@@ -34,6 +34,7 @@ TagManager:
   - LunchTable
   - Carpet
   - EliPhoto2
+  - DoorDialogues
   layers:
   - Default
   - TransparentFX

@@ -7,6 +7,7 @@ public class EcranDeFin : MonoBehaviour
 {
     public int winscene;
     public int defscene;
+
 public void Victory()
     {
         SceneManager.LoadScene(winscene);
