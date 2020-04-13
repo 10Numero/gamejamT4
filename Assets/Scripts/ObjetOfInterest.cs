@@ -11,7 +11,8 @@ public class ObjetOfInterest : MonoBehaviour
     public GameObject GM;
     private DialogueManager DM;
     public GameObject Comment; 
-    private Dialogue CommentDialogue; 
+    private Dialogue CommentDialogue;
+    public AudioSource audioS;
 
     private Renderer rend;
     public bool isVisible = false;
@@ -54,7 +55,7 @@ public class ObjetOfInterest : MonoBehaviour
                     HasBeenPhotographed = true;
                     GM.GetComponent<GM>().PhotographedObjects.Add(gameObject);
                     GM.GetComponent<GM>().GameState++;
-                    if (Comment != null) {
+                    if (Comment != null && !audioS.isPlaying) {
                         DM.StartDialogue(CommentDialogue);
                     }
                     isReady = false;

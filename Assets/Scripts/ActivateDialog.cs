@@ -69,11 +69,11 @@ public class ActivateDialog : MonoBehaviour
         pastAlliance.GetComponent<ObjetOfInterest>().cantBePhotographed = false;
         pastIntactBottle.GetComponent<ObjetOfInterest>().cantBePhotographed = false;
 
-        //firstCondition = false;
-        //firstConditionPast = false;
-        //secondCondition = false;
-        //secondConditionPast = false;
-        //finalCondition = false;
+        firstCondition = false;
+        firstConditionPast = false;
+        secondCondition = false;
+        secondConditionPast = false;
+        finalCondition = false;
 
         doOnceDoorNoise = false;
 
@@ -236,8 +236,12 @@ public class ActivateDialog : MonoBehaviour
             {
                 FindObjectOfType<DialogueManager>().StartDialogue(recaps[7]);
                 doOnceRecap[7] = true;
-                finalCondition = true;
             }
+        }
+
+        if (examinationDialogues[0] && examinationDialogues[1] && examinationDialogues[2] && examinationDialogues[3])
+        {
+            finalCondition = true;
         }
 
         // Choose between Maria and William
