@@ -5,18 +5,18 @@ using UnityEngine.UI;
 
 public class ActivateDialog : MonoBehaviour
 {
-    
+    [Header("User Interface")]
     public GameObject talkAid;
     public GameObject letterToRead;
-
-    [Space(10)]
+    
+    [Header("Audiosource")]
     public AudioSource audioS;
-
-    [Space(10)]
+    
+    [Header("William's Door")]
     public GameObject closedDoorWilliam;
     public GameObject opendedDoorWilliam;
-
-    [Space(10)]
+    
+    [Header("Objects from the Past to shot")]
     public GameObject pastBedRobert;
     public GameObject pastAlliance;
     public GameObject pastIntactBottle;
@@ -26,22 +26,22 @@ public class ActivateDialog : MonoBehaviour
     public GameObject pastSuitcase;
     public GameObject pastTableBrokenLamp;
     public GameObject pastNewspaper;
-
-    [Space(10)]
+    
+    [Header("Dialogues")]
     public Dialogue[] commentsPresent;
     public Dialogue[] recaps;
     public Dialogue openDoor;
 
     private bool lookAtBody = false;
 
-    private bool[] examination1 = new bool[6];
-    private bool[] examination2 = new bool[4];
-    private bool[] examination3 = new bool[3];
+    private bool[] examination1 = new bool[7];
+    private bool[] examination2 = new bool[5];
+    private bool[] examination3 = new bool[4];
 
     private bool doOnceDoorNoise = false;
-    private bool[] doOnceRecap = new bool[7];
-
-    [Space(10)]
+    private bool[] doOnceRecap = new bool[8];
+    
+    [Header("Conditions")]
     public bool firstCondition = false;
     public bool firstConditionPast = false;
     public bool secondCondition = false;
@@ -55,8 +55,12 @@ public class ActivateDialog : MonoBehaviour
         closedDoorWilliam.SetActive(true);
         opendedDoorWilliam.SetActive(false);
 
-        //firstCondition = false;
-        //firstConditionPast = false;
+        pastBedRobert.GetComponent<ObjetOfInterest>().cantBePhotographed = false;
+        pastAlliance.GetComponent<ObjetOfInterest>().cantBePhotographed = false;
+        pastIntactBottle.GetComponent<ObjetOfInterest>().cantBePhotographed = false;
+
+        firstCondition = false;
+        firstConditionPast = false;
         //secondCondition = false;
         //secondConditionPast = false;
 
@@ -119,7 +123,7 @@ public class ActivateDialog : MonoBehaviour
             pastNewspaper.GetComponent<ObjetOfInterest>().cantBePhotographed = false;
         }
         
-        if (secondCondition)
+        if (secondCondition && secondConditionPast)
         {
             closedDoorWilliam.SetActive(false);
             opendedDoorWilliam.SetActive(true);

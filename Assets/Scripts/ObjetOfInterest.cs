@@ -43,7 +43,8 @@ public class ObjetOfInterest : MonoBehaviour
 
 
         GameState = GM.GetComponent<GM>().GameState;
-        if (GameState >= InterestState && !HasBeenPhotographed && cantBePhotographed)
+
+        if (GameState >= InterestState && !HasBeenPhotographed && !cantBePhotographed)
         {
             I_Can_See();
             if (cam2.activeInHierarchy && isReady)
