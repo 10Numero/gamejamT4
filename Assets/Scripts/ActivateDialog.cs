@@ -245,9 +245,10 @@ public class ActivateDialog : MonoBehaviour
         }
 
         // Choose between Maria and William
-        if (finalCondition)
+        if (finalCondition && !audioS.isPlaying)
         {
             Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             buttons.SetActive(true);
         }
 
