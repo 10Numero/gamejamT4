@@ -45,7 +45,7 @@ public class ObjetOfInterest : MonoBehaviour
 
         GameState = GM.GetComponent<GM>().GameState;
 
-        if (GameState >= InterestState && !HasBeenPhotographed && !cantBePhotographed)
+        if (GameState >= InterestState && !HasBeenPhotographed && !cantBePhotographed && !audioS.isPlaying)
         {
             I_Can_See();
             if (cam2.activeInHierarchy && isReady)
@@ -55,7 +55,7 @@ public class ObjetOfInterest : MonoBehaviour
                     HasBeenPhotographed = true;
                     GM.GetComponent<GM>().PhotographedObjects.Add(gameObject);
                     GM.GetComponent<GM>().GameState++;
-                    if (Comment != null && !audioS.isPlaying) {
+                    if (Comment != null) {
                         DM.StartDialogue(CommentDialogue);
                     }
                     isReady = false;
